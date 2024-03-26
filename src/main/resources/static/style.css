@@ -16,3 +16,9 @@ textarea {
 input[type=submit] {
     margin-top: 10px;
 }
+.center-div {
+    width: 30%; /* 또는 다른 값으로 조정 */
+    margin: 0 auto;
+    padding: 10px; /* 필요에 따라 조정 */
+    font-size: 1.2em; /* 또는 다른 값으로 조정 */
+}

@@ -1,8 +1,11 @@
 package com.ll.mm.user;
 
+import com.ll.mm.review.Review;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +23,7 @@ public class SiteUser {
 
     @Column(unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+    private List<Review> review;
 }

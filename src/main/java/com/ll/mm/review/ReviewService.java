@@ -69,4 +69,8 @@ public class ReviewService {
         review.getVoter().add(siteUser);
         this.reviewRepository.save(review);
     }
+
+    public List<Review> getUserList(SiteUser user) {
+        return this.reviewRepository.findByAuthorOrderByIdDesc(user);
+    }
 }

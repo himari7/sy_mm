@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.util.List;
 
 @Slf4j
 @RequestMapping("/review")
@@ -123,4 +124,20 @@ public class ReviewController {
         this.reviewService.vote(review, siteUser);
         return String.format("redirect:/review/detail/%s", id);
     }
+
+    @GetMapping("/me")
+    public String me(Principal principal, Model model) {
+        String name = principal.getName();
+        SiteUser user = userService.getUser(name);
+
+        List<Review> reviewList = reviewService.getUserList(user);
+
+        model.addAttribute("user", user);
+        model.addAttribute("reviewList", reviewList);
+
+        return "me";
+    }
+
+
+
 }
